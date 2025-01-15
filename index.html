@@ -18,6 +18,7 @@
             --accent: #6C5CE7;
             --background: #FAFAFA;
             --gradient: linear-gradient(135deg, #6C5CE7, #8E44AD);
+            --nav-height: 80px; /* Added nav height variable */
         }
 
         body {
@@ -37,16 +38,19 @@
             display: flex;
             align-items: center;
             background: white;
+            padding-top: var(--nav-height); /* Added padding to account for fixed nav */
         }
 
         nav {
             position: fixed;
             width: 100%;
-            padding: 1.5rem 0;
+            height: var(--nav-height); /* Fixed nav height */
             background: rgba(255,255,255,0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex; /* Added flex display */
+            align-items: center; /* Center nav items vertically */
         }
 
         .nav-container {
@@ -56,6 +60,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
+            width: 100%; /* Ensure full width */
         }
 
         .logo {
@@ -87,6 +92,7 @@
             flex-direction: column;
             gap: 2rem;
             max-width: 800px;
+            width: 100%; /* Added full width */
         }
 
         .hero-title {
@@ -114,6 +120,7 @@
             font-family: monospace;
             margin: 2rem 0;
             position: relative;
+            padding-left: 3rem; /* Added space for prompt symbol */
         }
 
         .prompt-demo::before {
@@ -123,6 +130,7 @@
             left: 1rem;
         }
 
+        /* Rest of the CSS remains the same */
         .button {
             display: inline-flex;
             align-items: center;
