@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LumoAI - Create Stunning Websites with AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        :root {
+            --primary: #2D3436;
+            --secondary: #7F8C8D;
+            --accent: #6C5CE7;
+            --background: #FAFAFA;
+            --gradient: linear-gradient(135deg, #6C5CE7, #8E44AD);
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--primary);
+            background: var(--background);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: white;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            padding: 1.5rem 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .prompt-demo {
+            background: #1E1E1E;
+            padding: 2rem;
+            border-radius: 15px;
+            color: #fff;
+            font-family: monospace;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .prompt-demo::before {
+            content: ">";
+            color: #6C5CE7;
+            position: absolute;
+            left: 1rem;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .button-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+        }
+
+        .button-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.6);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 5rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonials {
+            background: white;
+            padding: 5rem 0;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--background);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 1rem;
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            align-items: center;
+            justify-items: center;
+            margin: 3rem 0;
+        }
+
+        .brand-logo {
+            height: 40px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .brand-logo:hover {
+            opacity: 1;
+        }
+
+        .footer {
+            background: var(--primary);
+            color: white;
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-column a {
+            color: #ffffff80;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #ffffff20;
+            padding-top: 2rem;
+            text-align: center;
+            color: #ffffff80;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">LumoAI</a>
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <div class="hero-section">
+                <h1 class="hero-title">Create Your Website with a Single Prompt</h1>
+                <p class="hero-subtitle">Transform your ideas into stunning websites instantly using AI. No coding required.</p>
+                <div class="prompt-demo">
+                    Create a modern portfolio website for a photographer with a dark theme and full-screen gallery
+                </div>
+                <div class="hero-buttons">
+                    <a href="#try" class="button button-primary">Try It Free</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="features">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">From prompt to published in minutes</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>1. Describe Your Website</h3>
+                    <p>Tell us what you want in plain English. Our AI understands your vision and requirements.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>2. AI Generation</h3>
+                    <p>Our AI creates a complete website with custom design, content, and functionality.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>3. Customize & Deploy</h3>
+                    <p>Fine-tune your site with our intuitive editor and publish it with one click.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Users Say</h2>
+            <p class="section-subtitle">Join thousands of satisfied creators</p>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"I created my photography portfolio in minutes. The AI understood exactly what I wanted and the results were incredible."</p>
+                    <div class="testimonial-author">
+                        <img src="/api/placeholder/50/50" alt="Sarah Chen" class="author-avatar">
+                        <div>
+                            <strong>Sarah Chen</strong>
+                            <p>Professional Photographer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"As a startup founder, I needed a website fast. LumoAI delivered a professional site that looked like it was made by a top agency."</p>
+                    <div class="testimonial-author">
+                        <img src="/api/placeholder/50/50" alt="Mark Rodriguez" class="author-avatar">
+                        <div>
+                            <strong>Mark Rodriguez</strong>
+                            <p>CEO, TechStart</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The ability to generate an entire website from a simple description is revolutionary. This is the future of web development."</p>
+                    <div class="testimonial-author">
+                        <img src="/api/placeholder/50/50" alt="Lisa Johnson" class="author-avatar">
+                        <div>
+                            <strong>Lisa Johnson</strong>
+                            <p>Digital Consultant</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="section-title" style="margin-top: 5rem">Trusted By</h3>
+            <div class="brands-grid">
+                <img src="/api/placeholder/150/40" alt="TechCrunch" class="brand-logo">
+                <img src="/api/placeholder/150/40" alt="Forbes" class="brand-logo">
+                <img src="/api/placeholder/150/40" alt="Wired" class="brand-logo">
+                <img src="/api/placeholder/150/40" alt="ProductHunt" class="brand-logo">
+                <img src="/api/placeholder/150/40" alt="FastCompany" class="brand-logo">
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Product</h3>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#examples">Examples</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#enterprise">Enterprise</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#docs">Documentation</a></li>
+                        <li><a href="#guides">Guides</a></li>
+                        <li><a href="#tutorials">Tutorials</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="#press">Press</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                        <li><a href="#security">Security</a></li>
+                        <li><a href="#compliance">Compliance</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 LumoAI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
